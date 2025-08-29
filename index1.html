@@ -444,18 +444,16 @@
         });
       });
 
-      // Ensure seed is visible at start (even with 0 completed)
       plantParts[0].classList.add('show');
 
-      // Load any existing progress (and possibly roll to a new day)
+    
       loadProgress();
 
-      // Midnight rollover watcher (checks once per minute)
       let lastDateStr = todayKey();
       setInterval(() => {
         const nowStr = todayKey();
         if (nowStr !== lastDateStr) {
-          // Day changed while tab was open -> finalize yesterday using saved progress, then reset
+          
           const saved = JSON.parse(localStorage.getItem('habitProgress') || '[]');
           finalizeDay(lastDateStr, saved);
           lastDateStr = nowStr;
@@ -465,4 +463,5 @@
     });
   </script>
 </body>
+
 </html>
